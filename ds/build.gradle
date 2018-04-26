@@ -1,0 +1,39 @@
+group 'ajira_coding_challenge'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'jacoco'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+mainClassName = "MainApp"
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/java'
+        }
+    }
+    test {
+        java {
+            srcDirs = ["test/java"]
+        }
+    }
+}
+run{
+    standardInput = System.in
+    standardOutput = System.out
+}
+
+dependencies {
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.hamcrest', name: 'hamcrest-core', version: '1.3'
+    testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3'
+
+}
