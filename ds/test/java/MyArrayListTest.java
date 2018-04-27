@@ -41,4 +41,18 @@ public class MyArrayListTest {
         MyArrayList<String> myArrayList = new MyArrayList<>(10);
         assertEquals(myArrayList.isEmpty(),false);
     }
+
+    @Test
+    public void clear_ClearArray_True() {
+        MyArrayList<String> myArrayList = new MyArrayList<>(10);
+        myArrayList.clear();
+        assertEquals(myArrayList.isEmpty(),true);
+    }
+
+    @Test
+    public void clear_ClearArray_ReturnsZero() {
+        MyArrayList<String> myArrayList = new MyArrayList<>(10);
+        myArrayList.clear();
+        assertEquals(myArrayList.size(),0);
+    }
 }

@@ -88,7 +88,7 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public void clear() {
-
+        elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
     }
 
     @Override
