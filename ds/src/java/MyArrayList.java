@@ -1,12 +1,9 @@
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 /**
  * Created by mani on 25/04/18.
  */
-public class MyArrayList<E> implements List<E> {
+public class MyArrayList<E> implements List<E>, RandomAccess {
 
     private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
 
@@ -52,8 +49,21 @@ public class MyArrayList<E> implements List<E> {
     }
 
     @Override
-    public boolean add(E e) {
-        return false;
+    public boolean add(E element) {
+        if((elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) || isFull()){
+            resizeArray();
+        }
+        //elementData[size++] = element;
+        return true;
+    }
+
+    private boolean isFull() {
+
+        return true;
+    }
+
+    private void resizeArray() {
+
     }
 
     @Override

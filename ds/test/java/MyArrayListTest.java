@@ -55,4 +55,17 @@ public class MyArrayListTest {
         myArrayList.clear();
         assertEquals(myArrayList.size(),0);
     }
+
+    @Test
+    public void contains_ElementAbsent_False() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+        assertEquals(myArrayList.contains("A"),false);
+    }
+
+    @Test
+    public void contains_ElementPresent_True() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+        myArrayList.add("A");
+        assertEquals(myArrayList.contains("A"),true);
+    }
 }
