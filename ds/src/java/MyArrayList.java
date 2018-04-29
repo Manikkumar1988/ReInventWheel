@@ -11,21 +11,24 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
 
     transient Object[] elementData;
 
+    private int theSize = 0;
+
     MyArrayList() {
         elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
     }
 
     MyArrayList(int initialCapacity) {
         elementData = new Object[initialCapacity];
+        theSize = initialCapacity;
     }
     @Override
     public int size() {
-        return elementData.length;
+        return theSize;
     }
 
     @Override
     public boolean isEmpty() {
-        return elementData.length == 0;
+        return theSize == 0;
     }
 
     @Override
@@ -99,6 +102,7 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
     @Override
     public void clear() {
         elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
+        theSize = 0;
     }
 
     @Override
