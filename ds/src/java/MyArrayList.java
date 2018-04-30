@@ -33,6 +33,9 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
 
     @Override
     public boolean contains(Object o) {
+        for(int index=0;index<theSize;index++) {
+            return (elementData[index].equals(o));
+        }
         return false;
     }
 
@@ -56,17 +59,20 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
         if((elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) || isFull()){
             resizeArray();
         }
-        //elementData[size++] = element;
+        elementData[theSize++] = element;
         return true;
     }
 
     private boolean isFull() {
-
-        return true;
+        return !(elementData.length <= theSize);
     }
 
     private void resizeArray() {
-
+        Object[] newArray = new Object[theSize + 5];
+        for(int index=0;index<theSize;index++) {
+            newArray[index] = elementData[index];
+        }
+        elementData = newArray;
     }
 
     @Override

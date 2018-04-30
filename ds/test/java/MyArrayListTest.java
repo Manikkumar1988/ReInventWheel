@@ -63,9 +63,30 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void contains_ElementPresent_True() {
+    public void contains_ElementStringPresent_True() {
         MyArrayList<String> myArrayList = new MyArrayList<>();
         myArrayList.add("A");
         assertEquals(myArrayList.contains("A"),true);
+    }
+
+    @Test
+    public void contains_ElementIntegerPresent_True() {
+        MyArrayList<Integer> myArrayList = new MyArrayList<>();
+        myArrayList.add(1);
+        assertEquals(myArrayList.contains(1),true);
+    }
+
+    @Test
+    public void contains_ElementFloatPresent_True() {
+        MyArrayList<Float> myArrayList = new MyArrayList<>();
+        myArrayList.add(1.f);
+        assertEquals(myArrayList.contains(1.f),true);
+    }
+
+    @Test
+    public void contains_ElementLongPresent_True() {
+        MyArrayList<Long> myArrayList = new MyArrayList<>();
+        myArrayList.add(1l);
+        assertEquals(myArrayList.contains(1l),true);
     }
 }
