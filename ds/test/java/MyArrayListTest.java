@@ -20,9 +20,9 @@ public class MyArrayListTest {
     }*/
 
     @Test
-    public void Size_InitializedWithOne_ReturnsOne() {
+    public void Size_InitializedWithOne_ReturnsZero() {
         MyArrayList<String> myArrayList = new MyArrayList<>(1);
-        assertEquals(myArrayList.size(),1);
+        assertEquals(myArrayList.size(),0);
     }
 
     @Test(expected = Exception.class)
@@ -31,14 +31,21 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void isEmpty_EmptyArray_True() {
+    public void isEmpty_EmptyNonPopulatedArray_True() {
         MyArrayList<String> myArrayList = new MyArrayList<>();
         assertEquals(myArrayList.isEmpty(),true);
     }
 
     @Test
-    public void isEmpty_NonEmptyArray_False() {
+    public void isEmpty_NonEmptyNonPopulatedArray_True() {
         MyArrayList<String> myArrayList = new MyArrayList<>(10);
+        assertEquals(myArrayList.isEmpty(),true);
+    }
+
+    @Test
+    public void isEmpty_NonEmptyPopulatedArray_False() {
+        MyArrayList<String> myArrayList = new MyArrayList<>(10);
+        myArrayList.add("A");
         assertEquals(myArrayList.isEmpty(),false);
     }
 
@@ -104,4 +111,63 @@ public class MyArrayListTest {
         myArrayList.add(1l);
         assertEquals(myArrayList.contains(1l),true);
     }
+
+    @Test
+    public void indexOf_NonMatchingDataType_MinusOne()
+    {
+        MyArrayList<Long> myArrayList = new MyArrayList<>();
+        myArrayList.add(1l);
+
+        assertEquals(myArrayList.indexOf("2"),-1);
+    }
+
+    @Test
+    public void indexOf_MatchingData_Zero()
+    {
+        MyArrayList<Long> myArrayList = new MyArrayList<>();
+        myArrayList.add(1l);
+
+        assertEquals(myArrayList.indexOf(1l),0);
+    }
+
+
+    @Test
+    public void lastIndexOf_NonMatchingDataType_MinusOne()
+    {
+        MyArrayList<Long> myArrayList = new MyArrayList<>();
+        myArrayList.add(1l);
+        myArrayList.add(2l);
+        myArrayList.add(3l);
+        myArrayList.add(1l);
+
+        assertEquals(myArrayList.indexOf("2"),-1);
+    }
+
+    @Test
+    public void lastIndexOf_MatchingData_Zero()
+    {
+        MyArrayList<Long> myArrayList = new MyArrayList<>();
+        myArrayList.add(1l);
+        myArrayList.add(2l);
+        myArrayList.add(3l);
+        myArrayList.add(1l);
+
+        assertEquals(myArrayList.lastIndexOf(1l),3);
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void get_IndexLessThanZero_ThrowsException() {
+        MyArrayList<Long> myArrayList = new MyArrayList<>();
+        myArrayList.get(-1);
+    }
+
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void get_IndexGreaterThanSize_ThrowsException() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+        myArrayList.add("A");
+        myArrayList.get(5);
+    }
+
+
 }

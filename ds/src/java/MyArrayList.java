@@ -7,6 +7,8 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
 
     private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
 
+    private static final int GROWTH_FACTOR = 5;
+
     private int DEFAULT_INITIAL_CAPACITY = 10;
 
     transient Object[] elementData;
@@ -19,8 +21,8 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
 
     MyArrayList(int initialCapacity) {
         elementData = new Object[initialCapacity];
-        theSize = initialCapacity;
     }
+
     @Override
     public int size() {
         return theSize;
@@ -56,25 +58,20 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
 
     @Override
     public boolean add(E element) {
-        if(/*(elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) ||*/ isFull()){
-            System.out.print("To be resized");
+        if((elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) || isFull()){
             resizeArray();
         }
         elementData[theSize++] = element;
-        for(int index=0;index<theSize;index++) {
-            System.out.print("\n"+elementData[index]);
-        }
         return true;
     }
 
     private boolean isFull() {
-        return (elementData.length >= (theSize + 1));
+        return (elementData.length <= theSize);
     }
 
     private void resizeArray() {
-        Object[] newArray = new Object[theSize + 5];
+        Object[] newArray = new Object[theSize + GROWTH_FACTOR];
         for(int index=0;index<theSize;index++) {
-            System.out.print("\nindex: "+index);
             newArray[index] = elementData[index];
         }
         elementData = newArray;
@@ -118,7 +115,13 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
 
     @Override
     public E get(int index) {
-        return null;
+        rangeCheck(index);
+        return (E) elementData[index];
+    }
+
+    private void rangeCheck(int index) {
+        if (index < 0 || index >= theSize)
+            throw new ArrayIndexOutOfBoundsException();
     }
 
     @Override
@@ -138,12 +141,20 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        for(int index=0;index<theSize;index++) {
+            if(elementData[index].equals(o))
+                return index;
+        }
+        return -1;
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        for(int index=theSize-1;index>=0;index--) {
+            if(elementData[index].equals(o))
+                return index;
+        }
+        return -1;
     }
 
     @Override
