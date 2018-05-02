@@ -42,21 +42,6 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
     }
 
     @Override
-    public Iterator<E> iterator() {
-        return null;
-    }
-
-    @Override
-    public Object[] toArray() {
-        return new Object[0];
-    }
-
-    @Override
-    public <T> T[] toArray(T[] a) {
-        return null;
-    }
-
-    @Override
     public boolean add(E element) {
         if((elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) || isFull()){
             resizeArray();
@@ -78,8 +63,104 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
     }
 
     @Override
+    public void clear() {
+        elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
+        theSize = 0;
+    }
+
+    @Override
+    public E get(int index) {
+        rangeCheck(index);
+        return (E) elementData[index];
+    }
+
+    @Override
+    public E set(int index, E element) {
+        rangeCheck(index);
+        elementData[index] = element;
+        return null;
+    }
+
+    @Override
+    public void add(int index, E element) {
+        rangeCheck(index);
+    }
+
+    @Override
+    public E remove(int index) {
+        rangeCheck(index);
+        return null;
+    }
+
+    private void rangeCheck(int index) {
+        if (index < 0 || index >= theSize)
+            throw new ArrayIndexOutOfBoundsException();
+    }
+
+
+    @Override
     public boolean remove(Object o) {
         return false;
+    }
+
+
+    @Override
+    public int indexOf(Object o) {
+        for(int index=0;index<theSize;index++) {
+            if(elementData[index].equals(o))
+                return index;
+        }
+        return -1;
+    }
+
+    @Override
+    public int lastIndexOf(Object o) {
+        for(int index=theSize-1;index>=0;index--) {
+            if(elementData[index].equals(o))
+                return index;
+        }
+        return -1;
+    }
+
+    /*
+        To array
+     */
+    @Override
+    public Object[] toArray() {
+        return new Object[0];
+    }
+
+    @Override
+    public <T> T[] toArray(T[] a) {
+        return null;
+    }
+
+
+    /*
+        iterators
+     */
+    @Override
+    public Iterator<E> iterator() {
+        return null;
+    }
+
+    @Override
+    public ListIterator<E> listIterator() {
+        return null;
+    }
+
+    @Override
+    public ListIterator<E> listIterator(int index) {
+        return null;
+    }
+
+    /*
+        Collections
+     */
+
+    @Override
+    public List<E> subList(int fromIndex, int toIndex) {
+        return null;
     }
 
     @Override
@@ -105,70 +186,5 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
     @Override
     public boolean retainAll(Collection<?> c) {
         return false;
-    }
-
-    @Override
-    public void clear() {
-        elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
-        theSize = 0;
-    }
-
-    @Override
-    public E get(int index) {
-        rangeCheck(index);
-        return (E) elementData[index];
-    }
-
-    private void rangeCheck(int index) {
-        if (index < 0 || index >= theSize)
-            throw new ArrayIndexOutOfBoundsException();
-    }
-
-    @Override
-    public E set(int index, E element) {
-        return null;
-    }
-
-    @Override
-    public void add(int index, E element) {
-
-    }
-
-    @Override
-    public E remove(int index) {
-        return null;
-    }
-
-    @Override
-    public int indexOf(Object o) {
-        for(int index=0;index<theSize;index++) {
-            if(elementData[index].equals(o))
-                return index;
-        }
-        return -1;
-    }
-
-    @Override
-    public int lastIndexOf(Object o) {
-        for(int index=theSize-1;index>=0;index--) {
-            if(elementData[index].equals(o))
-                return index;
-        }
-        return -1;
-    }
-
-    @Override
-    public ListIterator<E> listIterator() {
-        return null;
-    }
-
-    @Override
-    public ListIterator<E> listIterator(int index) {
-        return null;
-    }
-
-    @Override
-    public List<E> subList(int fromIndex, int toIndex) {
-        return null;
     }
 }

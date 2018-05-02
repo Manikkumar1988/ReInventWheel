@@ -169,5 +169,54 @@ public class MyArrayListTest {
         myArrayList.get(5);
     }
 
+    @Test
+    public void get_IndexWithinBoundary_ActualElement() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+        myArrayList.add("A");
+        assertEquals(myArrayList.get(0),"A");
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void set_IndexLessThanZero_ThrowsException() {
+        MyArrayList<Long> myArrayList = new MyArrayList<>();
+        myArrayList.set(-1,1l);
+    }
+
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void set_IndexGreaterThanSize_ThrowsException() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+        myArrayList.add("A");
+        myArrayList.set(5,"B");
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void add_IndexLessThanZero_ThrowsException() {
+        MyArrayList<Long> myArrayList = new MyArrayList<>();
+        myArrayList.add(-1,1l);
+    }
+
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void add_IndexGreaterThanSize_ThrowsException() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+        myArrayList.add("A");
+        myArrayList.add(5,"B");
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void remove_IndexLessThanZero_ThrowsException() {
+        MyArrayList<Long> myArrayList = new MyArrayList<>();
+        myArrayList.remove(-1);
+    }
+
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void remove_IndexGreaterThanSize_ThrowsException() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+        myArrayList.add("A");
+        myArrayList.remove(5);
+    }
+
 
 }
