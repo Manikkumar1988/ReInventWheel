@@ -89,4 +89,19 @@ public class MyArrayListTest {
         myArrayList.add(1l);
         assertEquals(myArrayList.contains(1l),true);
     }
+
+    @Test
+    public void add_EmptyArrayList_True() {
+        MyArrayList<Long> myArrayList = new MyArrayList<>();
+        myArrayList.add(1l);
+        assertEquals(myArrayList.contains(1l),true);
+    }
+
+    @Test
+    public void add_FullArrayList_True() {
+        MyArrayList<Long> myArrayList = new MyArrayList<>(1);
+        myArrayList.add(1l);
+        myArrayList.add(1l);
+        assertEquals(myArrayList.contains(1l),true);
+    }
 }

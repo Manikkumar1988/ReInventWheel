@@ -56,20 +56,25 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
 
     @Override
     public boolean add(E element) {
-        if((elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) || isFull()){
+        if(/*(elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) ||*/ isFull()){
+            System.out.print("To be resized");
             resizeArray();
         }
         elementData[theSize++] = element;
+        for(int index=0;index<theSize;index++) {
+            System.out.print("\n"+elementData[index]);
+        }
         return true;
     }
 
     private boolean isFull() {
-        return !(elementData.length <= theSize);
+        return (elementData.length >= (theSize + 1));
     }
 
     private void resizeArray() {
         Object[] newArray = new Object[theSize + 5];
         for(int index=0;index<theSize;index++) {
+            System.out.print("\nindex: "+index);
             newArray[index] = elementData[index];
         }
         elementData = newArray;

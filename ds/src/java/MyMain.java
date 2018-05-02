@@ -21,6 +21,8 @@ public class MyMain {
                 .collect(Collectors.toList());
 
         System.out.print(result);
+
+
     }
 
     private static String multiplyByTwo(String x) {
