@@ -9,3 +9,4 @@ out
 gen
 .idea/
 build/
+/src/java/MyMain.java
