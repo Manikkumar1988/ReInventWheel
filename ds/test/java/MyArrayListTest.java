@@ -190,6 +190,15 @@ public class MyArrayListTest {
         myArrayList.set(5,"B");
     }
 
+    @Test
+    public void set_IndexWithinBoundary_Element() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+        myArrayList.add("A");
+        myArrayList.add("B");
+        assertEquals(myArrayList.set(1,"C"),"C");
+    }
+
+
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void add_IndexLessThanZero_ThrowsException() {
         MyArrayList<Long> myArrayList = new MyArrayList<>();
@@ -203,6 +212,16 @@ public class MyArrayListTest {
         myArrayList.add("A");
         myArrayList.add(5,"B");
     }
+
+    @Test
+    public void add_IndexWithinBoundary_Element() {
+        MyArrayList<String> myArrayList = new MyArrayList<>(2);
+        myArrayList.add("A");
+        myArrayList.add("B");
+        myArrayList.add(1,"C");
+        //assertEquals(myArrayList.indexOf("C"),1);
+    }
+
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void remove_IndexLessThanZero_ThrowsException() {
@@ -218,5 +237,23 @@ public class MyArrayListTest {
         myArrayList.remove(5);
     }
 
+    @Test
+    public void remove_IndexWithinBoundaryElementAbsent_False() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+        myArrayList.add("A");
+        myArrayList.add("B");
+        assertEquals(myArrayList.remove("C"),false);
+    }
+
+    @Test
+    public void remove_IndexWithinBoundaryElementPresent_True() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+        myArrayList.add("A");
+        myArrayList.add("B");
+        assertEquals(myArrayList.remove("A"),true);
+        assertEquals(myArrayList.size(),1);
+        assertEquals(myArrayList.indexOf("A"),-1);
+        assertEquals(myArrayList.indexOf("B"),0);
+    }
 
 }

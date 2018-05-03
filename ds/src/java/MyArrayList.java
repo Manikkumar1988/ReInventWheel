@@ -23,6 +23,7 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
         elementData = new Object[initialCapacity];
     }
 
+    //Utils
     @Override
     public int size() {
         return theSize;
@@ -33,21 +34,68 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
         return theSize == 0;
     }
 
+
     @Override
-    public boolean contains(Object o) {
-        for(int index=0;index<theSize;index++) {
-            return (elementData[index].equals(o));
-        }
-        return false;
+    public void clear() {
+        elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
+        theSize = 0;
+    }
+
+    //Index based operations
+    @Override
+    public E get(int index) {
+        rangeCheck(index);
+        return (E) elementData[index];
     }
 
     @Override
+    public E set(int index, E element) {
+        rangeCheck(index);
+        elementData[index] = element;
+        return element;
+    }
+
+    @Override
+    public void add(int index, E element) {
+        rangeCheck(index);
+        ensureCapacityInternal();
+
+        //elementData[index] = element;
+    }
+
+    @Override
+    public E remove(int index) {
+        rangeCheck(index);
+        if(indexCheck(index)) {
+            E element = (E) elementData[index];
+            removeElement(index);
+            return element;
+        }
+        return null;
+    }
+
+    private void rangeCheck(int index) {
+        if (index < 0 || index >= theSize)
+            throw new ArrayIndexOutOfBoundsException();
+    }
+
+    private boolean indexCheck(int index) {
+            return (index > -1);
+    }
+
+
+    //Object based operations
+    @Override
     public boolean add(E element) {
+        ensureCapacityInternal();
+        elementData[theSize++] = element;
+        return true;
+    }
+
+    private void ensureCapacityInternal() {
         if((elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) || isFull()){
             resizeArray();
         }
-        elementData[theSize++] = element;
-        return true;
     }
 
     private boolean isFull() {
@@ -63,44 +111,19 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
     }
 
     @Override
-    public void clear() {
-        elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
-        theSize = 0;
-    }
-
-    @Override
-    public E get(int index) {
-        rangeCheck(index);
-        return (E) elementData[index];
-    }
-
-    @Override
-    public E set(int index, E element) {
-        rangeCheck(index);
-        elementData[index] = element;
-        return null;
-    }
-
-    @Override
-    public void add(int index, E element) {
-        rangeCheck(index);
-    }
-
-    @Override
-    public E remove(int index) {
-        rangeCheck(index);
-        return null;
-    }
-
-    private void rangeCheck(int index) {
-        if (index < 0 || index >= theSize)
-            throw new ArrayIndexOutOfBoundsException();
-    }
-
-
-    @Override
     public boolean remove(Object o) {
+        int index = indexOf(o);
+        if(indexCheck(index)) {
+            removeElement(index);
+            return true;
+        }
         return false;
+    }
+
+    private void removeElement(int index) {
+        for(int position = index;position<theSize - 1;position++)
+            elementData[position] = elementData[position+1];
+        theSize--;
     }
 
 
@@ -120,6 +143,11 @@ public class MyArrayList<E> implements List<E>, RandomAccess {
                 return index;
         }
         return -1;
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        return indexOf(o) > -1;
     }
 
     /*
