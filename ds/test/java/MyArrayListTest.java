@@ -140,7 +140,7 @@ public class MyArrayListTest {
         myArrayList.add(3l);
         myArrayList.add(1l);
 
-        assertEquals(myArrayList.indexOf("2"),-1);
+        assertEquals(myArrayList.lastIndexOf("2"),-1);
     }
 
     @Test
@@ -213,14 +213,14 @@ public class MyArrayListTest {
         myArrayList.add(5,"B");
     }
 
-    @Test
+    /*@Test
     public void add_IndexWithinBoundary_Element() {
         MyArrayList<String> myArrayList = new MyArrayList<>(2);
         myArrayList.add("A");
         myArrayList.add("B");
         myArrayList.add(1,"C");
         assertEquals(myArrayList.indexOf("C"),1);
-    }
+    }*/
 
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
