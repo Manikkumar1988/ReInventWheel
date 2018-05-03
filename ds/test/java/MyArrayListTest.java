@@ -199,7 +199,7 @@ public class MyArrayListTest {
     }
 
 
-    /*@Test(expected = ArrayIndexOutOfBoundsException.class)
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void add_IndexLessThanZero_ThrowsException() {
         MyArrayList<Long> myArrayList = new MyArrayList<>();
         myArrayList.add(-1,1l);
@@ -254,6 +254,6 @@ public class MyArrayListTest {
         assertEquals(myArrayList.size(),1);
         assertEquals(myArrayList.indexOf("A"),-1);
         assertEquals(myArrayList.indexOf("B"),0);
-    }*/
+    }
 
 }
