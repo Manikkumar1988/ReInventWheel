@@ -1,4 +1,4 @@
-[![codecov](https://codecov.io/gh/Manikkumar1988/ReInventWheel/branch/master/graph/badge.svg)](https://codecov.io/gh/Manikkumar1988/ReInventWheel)
+[![Build Status](https://travis-ci.org/Manikkumar1988/ReInventWheel.svg?branch=master)](https://travis-ci.org/Manikkumar1988/ReInventWheel)   [![codecov](https://codecov.io/gh/Manikkumar1988/ReInventWheel/branch/master/graph/badge.svg)](https://codecov.io/gh/Manikkumar1988/ReInventWheel)
 
 
 
