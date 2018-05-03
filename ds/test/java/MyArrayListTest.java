@@ -219,7 +219,7 @@ public class MyArrayListTest {
         myArrayList.add("A");
         myArrayList.add("B");
         myArrayList.add(1,"C");
-        //assertEquals(myArrayList.indexOf("C"),1);
+        assertEquals(myArrayList.indexOf("C"),1);
     }
 
 
