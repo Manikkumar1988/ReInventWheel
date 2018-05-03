@@ -4,8 +4,8 @@ jdk:
 before_script:
   - chmod +x ds/gradlew
 script:
-  - ./ds/gradlew check
-  - ./ds/gradlew codeCoverageReport
+  - ./gradlew test
+  - ./gradlew jacoco
 after_success:
   - if [ -e ./ds/gradlew ]; then ./ds/gradlew jacocoTestReport;else gradle jacocoTestReport;fi
   - bash <(curl -s https://codecov.io/bash)
