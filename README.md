@@ -1,3 +1,6 @@
+[![Code Coverage](https://img.shields.io/codecov/c/github/pvorb/property-providers/develop.svg)](https://codecov.io/github/pvorb/property-providers?branch=develop)
+
+
 # ReInventWheel
 
 This project aiming to reinvent algorithms and data structures for fun and education. It is very much a work in progress, and it likely always will be. As I hear about new algorithms or interesting data structures, I will attempt to implement them myself to gain a better understanding of how they really work.
