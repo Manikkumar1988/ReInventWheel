@@ -9,14 +9,28 @@ import java.util.function.Function;
  * Created by mani on 04/05/18.
  */
 public class MyHashmap<T,U> implements Map<T,U> {
+
+    private final static int DEFAULT_INITIAL_CAPACITY = 10;
+    private int theSize;
+
+    MyEntry<T,U> table[] = new MyEntry[DEFAULT_INITIAL_CAPACITY];
+
+    public int hashFinc(T key){
+        return 0;
+    }
+
+    public int indexFor(int hash, int length) {
+        return hash % length;
+    }
+
     @Override
     public int size() {
-        return 0;
+        return theSize;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return theSize==0;
     }
 
     @Override
@@ -36,6 +50,8 @@ public class MyHashmap<T,U> implements Map<T,U> {
 
     @Override
     public U put(T key, U value) {
+        int hash = hashFinc(key);
+        int index = indexFor(hash,table.length);
         return null;
     }
 
@@ -132,5 +148,16 @@ public class MyHashmap<T,U> implements Map<T,U> {
     @Override
     public U merge(T key, U value, BiFunction<? super U, ? super U, ? extends U> remappingFunction) {
         return null;
+    }
+
+    private class MyEntry<T,U> {
+        T key;
+        U value;
+        MyEntry<T,U> next;
+
+        MyEntry(T key,U value) {
+            this.key = key;
+            this.value = value;
+        }
     }
 }
