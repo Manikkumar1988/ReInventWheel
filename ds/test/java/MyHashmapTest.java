@@ -14,6 +14,12 @@ public class MyHashmapTest {
     @Test
     public void hash_PassedInteger_returnUniqueInteger() {
         MyHashmap<Integer,Object> blah = new MyHashmap<>();
-        assertEquals(blah.hashFinc(1),0);
+        assertEquals(blah.hashFunc(1),0);
+    }
+
+    @Test
+    public void put_ValidValues_ReturnValue(){
+        MyHashmap<Integer,Object> blah = new MyHashmap<>();
+        assertEquals(blah.put(1,2),2);
     }
 }

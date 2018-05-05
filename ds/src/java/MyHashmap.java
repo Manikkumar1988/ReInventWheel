@@ -15,7 +15,7 @@ public class MyHashmap<T,U> implements Map<T,U> {
 
     MyEntry<T,U> table[] = new MyEntry[DEFAULT_INITIAL_CAPACITY];
 
-    public int hashFinc(T key){
+    public int hashFunc(T key){
         return 0;
     }
 
@@ -50,9 +50,10 @@ public class MyHashmap<T,U> implements Map<T,U> {
 
     @Override
     public U put(T key, U value) {
-        int hash = hashFinc(key);
+        int hash = hashFunc(key);
         int index = indexFor(hash,table.length);
-        return null;
+        table[index] = new MyEntry<>(key,value);
+        return table[index].value;
     }
 
     @Override
