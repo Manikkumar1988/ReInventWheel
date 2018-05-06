@@ -16,7 +16,7 @@ public class MyHashmap<T,U> implements Map<T,U> {
     MyEntry<T,U> table[] = new MyEntry[DEFAULT_INITIAL_CAPACITY];
 
     public int hashFunc(T key){
-        return 0;
+        return (int) key;
     }
 
     public int indexFor(int hash, int length) {
