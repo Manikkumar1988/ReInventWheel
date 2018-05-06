@@ -15,8 +15,8 @@ public class MyHashmap<T,U> implements Map<T,U> {
 
     MyEntry<T,U> table[] = new MyEntry[DEFAULT_INITIAL_CAPACITY];
 
-    public int hashFunc(T key){
-        return (int) key;
+    private T hashFunc(T key){
+        return key;
     }
 
     public int indexFor(int hash, int length) {
@@ -45,14 +45,18 @@ public class MyHashmap<T,U> implements Map<T,U> {
 
     @Override
     public U get(Object key) {
-        return null;
+        Integer hash = (Integer) hashFunc((T)key);
+        int index = indexFor(hash,table.length);
+        theSize++;
+        return table[index].value;
     }
 
     @Override
     public U put(T key, U value) {
-        int hash = hashFunc(key);
+        Integer hash = (Integer) hashFunc(key);
         int index = indexFor(hash,table.length);
         table[index] = new MyEntry<>(key,value);
+        theSize++;
         return table[index].value;
     }
 

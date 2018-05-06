@@ -12,14 +12,30 @@ public class MyHashmapTest {
     public void setup(){}
 
     @Test
-    public void hash_PassedInteger_returnUniqueInteger() {
-        MyHashmap<Integer,Object> blah = new MyHashmap<>();
-        assertEquals(blah.hashFunc(1),0);
+    public void put_ValidValues_ReturnValue(){
+        MyHashmap<Integer,Object> myHashmap = new MyHashmap<>();
+        assertEquals(myHashmap.put(1,2),2);
     }
 
     @Test
-    public void put_ValidValues_ReturnValue(){
-        MyHashmap<Integer,Object> blah = new MyHashmap<>();
-        assertEquals(blah.put(1,2),2);
+    public void size_ValidValues_ReturnOne() {
+        MyHashmap<Integer,Object> myHashmap = new MyHashmap<>();
+        myHashmap.put(1,2);
+        assertEquals(myHashmap.size(),1);
+    }
+
+    @Test
+    public void size_ValidValues_ReturnTwo() {
+        MyHashmap<Integer,Object> myHashmap = new MyHashmap<>();
+        myHashmap.put(1,2);
+        myHashmap.put(3,4);
+        assertEquals(myHashmap.size(),2);
+    }
+
+    @Test
+    public void get_ValidKey_ReturnValue() {
+        MyHashmap<Integer,Object> myHashmap = new MyHashmap<>();
+        myHashmap.put(1,2);
+        assertEquals(myHashmap.get(1),2);
     }
 }
