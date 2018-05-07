@@ -38,4 +38,11 @@ public class MyHashmapTest {
         myHashmap.put(1,2);
         assertEquals(myHashmap.get(1),2);
     }
+
+    @Test
+    public void get_InValidKey_ReturnNull() {
+        MyHashmap<Integer,Object> myHashmap = new MyHashmap<>();
+        myHashmap.put(1,2);
+        assertEquals(myHashmap.get(2),null);
+    }
 }
