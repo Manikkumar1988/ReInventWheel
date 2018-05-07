@@ -48,7 +48,7 @@ public class MyHashmap<T,U> implements Map<T,U> {
         Integer hash = (Integer) hashFunc((T)key);
         int index = indexFor(hash,table.length);
         theSize++;
-        return (table[index]==null)? null: table[index].value;
+        return (table[index]==null) ? null: table[index].value;
     }
 
     @Override
@@ -62,7 +62,12 @@ public class MyHashmap<T,U> implements Map<T,U> {
 
     @Override
     public U remove(Object key) {
-        return null;
+        Integer hash = (Integer) hashFunc((T) key);
+        int index = indexFor(hash,table.length);
+        U oldValue = table[index].value;
+        table[index] = null;
+        --theSize;
+        return oldValue;
     }
 
     @Override

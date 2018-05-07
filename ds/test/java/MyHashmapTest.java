@@ -45,4 +45,19 @@ public class MyHashmapTest {
         myHashmap.put(1,2);
         assertEquals(myHashmap.get(2),null);
     }
+
+    @Test
+    public void remove_ValidKey_getReturnNull() {
+        MyHashmap<Integer,Object> myHashmap = new MyHashmap<>();
+        myHashmap.put(1,2);
+        myHashmap.remove(1);
+        assertEquals(myHashmap.get(1),null);
+    }
+
+    @Test
+    public void remove_ValidKey_returnValidValue() {
+        MyHashmap<Integer,Object> myHashmap = new MyHashmap<>();
+        myHashmap.put(1,2);
+        assertEquals(myHashmap.remove(1),2);
+    }
 }
