@@ -60,4 +60,13 @@ public class MyHashmapTest {
         myHashmap.put(1,2);
         assertEquals(myHashmap.remove(1),2);
     }
+
+    @Test
+    public void remove_ValidKey_SizeZero() {
+        MyHashmap<Integer,Object> myHashmap = new MyHashmap<>();
+        myHashmap.put(1,2);
+        assertEquals(myHashmap.remove(1),2);
+        assertEquals(myHashmap.size(),0);
+
+    }
 }
