@@ -67,6 +67,11 @@ public class MyHashmapTest {
         myHashmap.put(1,2);
         assertEquals(myHashmap.remove(1),2);
         assertEquals(myHashmap.size(),0);
+    }
 
+    @Test
+    public void isEmpty_HashmapCreated_True() {
+        MyHashmap<Integer,Object> myHashmap = new MyHashmap<>();
+        assertEquals(myHashmap.isEmpty(),true);
     }
 }

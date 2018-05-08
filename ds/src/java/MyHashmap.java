@@ -19,7 +19,7 @@ public class MyHashmap<T,U> implements Map<T,U> {
         return key;
     }
 
-    public int indexFor(int hash, int length) {
+    private int indexFor(int hash, int length) {
         return hash % length;
     }
 
