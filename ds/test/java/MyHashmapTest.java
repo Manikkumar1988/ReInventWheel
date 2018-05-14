@@ -74,4 +74,13 @@ public class MyHashmapTest {
         MyHashmap<Integer,Object> myHashmap = new MyHashmap<>();
         assertEquals(myHashmap.isEmpty(),true);
     }
+
+    @Test
+    public void clear_AfterClear_Empty() {
+        MyHashmap<Integer,Object> myHashmap = new MyHashmap<>();
+        myHashmap.put(1,2);
+        myHashmap.clear();
+        assertEquals(myHashmap.size(),0);
+        assertNull(myHashmap.get(1));
+    }
 }

@@ -77,7 +77,8 @@ public class MyHashmap<T,U> implements Map<T,U> {
 
     @Override
     public void clear() {
-
+        table = new MyEntry[DEFAULT_INITIAL_CAPACITY];
+        theSize = 0;
     }
 
     @Override
